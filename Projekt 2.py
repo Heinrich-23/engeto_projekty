@@ -59,13 +59,13 @@ def hra ():
                 continue
 #vizualizace obrazce
 def obrazec (list_znaku):
-    print( f"+---+---+---+\n"
-           f"| {list_znaku[0]} | {list_znaku[1]} | {list_znaku[2]} |\n"
-           f"+---+---+---+\n"
-           f"| {list_znaku[3]} | {list_znaku[4]} | {list_znaku[5]} |\n"
-           f"+---+---+---+\n"
-           f"| {list_znaku[6]} | {list_znaku[7]} | {list_znaku[8]} |\n"
-           f"+---+---+---+")
+    print(f"+---+---+---+".center(40))
+    print(f"| {list_znaku[0]} | {list_znaku[1]} | {list_znaku[2]} |".center(40))
+    print(f"+---+---+---+".center(40))
+    print(f"| {list_znaku[3]} | {list_znaku[4]} | {list_znaku[5]} |".center(40))
+    print(f"+---+---+---+".center(40))
+    print(f"| {list_znaku[6]} | {list_znaku[7]} | {list_znaku[8]} |".center(40))
+    print(f"+---+---+---+".center(40))
 #kontrola, zda nebyla splnena podminka vyhry, pripadne zda nejsou vybrana vsechna pole
 def kontrola_cile (znaky):
     if not znaky[0]== ' ' and znaky[0] == znaky [3] and znaky[3] == znaky[6]:
