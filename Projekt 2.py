@@ -1,17 +1,10 @@
-
-def obrazec (list_znaku):
-    print( f"+---+---+---+\n"
-           f"| {list_znaku[0]} | {list_znaku[1]} | {list_znaku[2]} |\n"
-           f"+---+---+---+\n"
-           f"| {list_znaku[3]} | {list_znaku[4]} | {list_znaku[5]} |\n"
-           f"+---+---+---+\n"
-           f"| {list_znaku[6]} | {list_znaku[7]} | {list_znaku[8]} |\n"
-           f"+---+---+---+")
 def hra ():
+#definice promennych
     oddelovac = '='*40
     znaky = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ]
     vypinac = 1
     pocitadlo = 0
+#uvodni text
     print('Hra piskvorky zacina...')
     print(oddelovac)
     print('Kazde kolo muzes umistit svuj znak na\n'
@@ -22,44 +15,58 @@ def hra ():
     print(oddelovac)
     print(('Pojdme zacit').center(40))
     print(oddelovac)
+#start hry
     while vypinac:
+        #vetev pro hrace o
         if pocitadlo % 2 == 0:
             print(oddelovac)
             tah = input('Hrac o | Prosim zadej cislo tahu:')
             print(oddelovac)
-
+            #odfiltrovani spatne zadane odpovedi ve forme textu
             if not tah.isnumeric():
                 print('Spatne zadany tah, hraj znovu:')
                 continue
+            #propsani mozne odpovedi
             elif int(tah) in range(1,10) and znaky[int(tah)-1]==' ':
                 znaky[int(tah)-1] = 'o'
                 pocitadlo = 1
                 obrazec(znaky)
                 vypinac = kontrola_cile(znaky)
                 continue
+            #spatna odpoved pokud je pole uz vybrane
             else:
                 print('Spatne zadany tah, hraj znovu:')
                 continue
+        #vetev pro hrace x
         if pocitadlo % 2 == 1:
             print(oddelovac)
             tah = input('Hrac x | Prosim zadej cislo tahu:')
             print(oddelovac)
-
+            #odfiltrovani spatne zadane odpovedi ve forme textu
             if not tah.isnumeric():
                 print('Spatne zadany tah, hraj znovu:')
                 continue
-
+            #propsani mozne odpovedi
             elif int(tah) in range(1,10) and znaky[int(tah)-1]==' ':
                 znaky[int(tah)-1] = 'x'
                 pocitadlo = 0
                 obrazec(znaky)
                 vypinac = kontrola_cile(znaky)
                 continue
+            #spatna odpoved pokud je pole uz vybrane
             else:
                 print('Spatne zadany tah, hraj znovu:')
                 continue
-
-
+#vizualizace obrazce
+def obrazec (list_znaku):
+    print( f"+---+---+---+\n"
+           f"| {list_znaku[0]} | {list_znaku[1]} | {list_znaku[2]} |\n"
+           f"+---+---+---+\n"
+           f"| {list_znaku[3]} | {list_znaku[4]} | {list_znaku[5]} |\n"
+           f"+---+---+---+\n"
+           f"| {list_znaku[6]} | {list_znaku[7]} | {list_znaku[8]} |\n"
+           f"+---+---+---+")
+#kontrola, zda nebyla splnena podminka vyhry, pripadne zda nejsou vybrana vsechna pole
 def kontrola_cile (znaky):
     if not znaky[0]== ' ' and znaky[0] == znaky [3] and znaky[3] == znaky[6]:
         print('Hrac',znaky[0],'vyhral, konec hry!')
